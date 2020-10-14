@@ -29,7 +29,7 @@ class Embed {
     applyStyles(root, {
       display: 'inline-block',
       overflow: 'hidden',
-      backgroundColor: '#36393E',
+      backgroundColor: '#F4F4F4',
       borderRadius: '7px',
       verticalAlign: 'top',
       ...styles
