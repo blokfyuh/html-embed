@@ -7,7 +7,7 @@ class Embed {
   id = generateUUID()
   iframe = document.createElement('iframe') as API
 
-  constructor(readonly root: API, server?: string, channel?: string) {
+  constructor(readonly root: API, server?: string, channel?: string, shard?: string) {
     const { id, iframe } = this
     if (this.injected) return
 
@@ -16,7 +16,7 @@ class Embed {
     const shadow = Shadow(root as any)
     shadow.appendChild(iframe)
 
-    const { url, ...styles } = this.parseAttributes(root, server, channel)
+    const { url, ...styles } = this.parseAttributes(root, server, channel, shard)
     iframe.setAttribute('src', url)
 
 //     this.setAPI(root, {
@@ -45,10 +45,10 @@ class Embed {
     return 'emit' in this.root && 'on' in this.root
   }
 
-  private parseAttributes(node: Element, server?: string, channel?: string) {
+  private parseAttributes(node: Element, server?: string, channel?: string, shard?: string) {
     server = server || node.getAttribute('server') || '299881420891881473'
     channel = channel || node.getAttribute('channel')
-    const shard = node.getAttribute('shard') || 'https://e.widgetbot.io'
+    shard = shard || node.getAttribute('shard') || 'https://e.widgetbot.io'
 
     const url = `${shard}/channels/${server}${
       channel ? `/${channel}` : ''

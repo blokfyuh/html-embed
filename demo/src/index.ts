@@ -20,7 +20,7 @@ document.querySelector('#demo').innerHTML = html`
   </widgetbot>
 `
 
-new WidgetBot(null, null)
+new WidgetBot(null, null, null)
 
 const embed: any = document.getElementById('embed')
 

@@ -8,10 +8,12 @@ class WidgetBot {
   public embeds = [] as API[]
   public server: string
   public channel: string
+  public shard: string
 
-  constructor(server: string, channel: string, dom_id?: string) {
+  constructor(server: string, channel: string, shard: string, dom_id?: string) {
     this.server = server;
     this.channel = channel;
+    this.shard = shard;
 
     this.register(dom_id)
 
@@ -22,7 +24,7 @@ class WidgetBot {
     const widgetbots = dom_id ? [document.getElementById(dom_id)] : document.getElementsByTagName('widgetbot') as any
 
     for (const embed of widgetbots) {
-      const { root } = new Embed(embed, this.server, this.channel)
+      const { root } = new Embed(embed, this.server, this.channel, this.shard)
       this.embeds.push(root)
     }
   }
